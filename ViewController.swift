@@ -24,8 +24,29 @@ class ViewController: UIViewController {
         timer!.invalidate()
         let randomImg = Int(arc4random_uniform(3))
         enemyJanken.image = UIImage(named: imageNameArray[randomImg])
+        // アプリ側のジャンケンを表示
         self.view.addSubview(enemyJanken)
+        // ジャンケンがチョキなら、「勝ち」のメッセージを表示
+        if (enemyJanken.image == UIImage(named: "choki")){
+            let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
+            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okayButton)
+            present(alert, animated: true, completion: nil)
+            // OKボタンを押下してからの処理が必要
+        }
+        // ジャンケンがパーなら、「負け」のメッセージを表示
+        if (enemyJanken.image == UIImage(named: "pa")){
+            let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
+            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okayButton)
+            present(alert, animated: true, completion: nil)
+        }
+        // ジャンケンがグーなら、やり直し
+        if (enemyJanken.image == UIImage(named: "gu")){
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+        }
     }
+
     @IBAction func choki(_ sender: Any) {
         // タイマーメソッド呼び出しを止める
         timer!.invalidate()
@@ -33,6 +54,25 @@ class ViewController: UIViewController {
         let randomImg = Int(arc4random_uniform(3))
         enemyJanken.image = UIImage(named: imageNameArray[randomImg])
         self.view.addSubview(enemyJanken)
+        // ジャンケンがパーなら、「勝ち」のメッセージを表示
+        if (enemyJanken.image == UIImage(named: "pa")){
+            let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
+            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okayButton)
+            present(alert, animated: true, completion: nil)
+            // OKボタンを押下してからの処理が必要
+        }
+        // ジャンケンがグーなら、「負け」のメッセージを表示
+        if (enemyJanken.image == UIImage(named: "gu")){
+            let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
+            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okayButton)
+            present(alert, animated: true, completion: nil)
+        }
+        // ジャンケンがチョキなら、やり直し
+        if (enemyJanken.image == UIImage(named: "choki")){
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+        }
     }
 
     @IBAction func pa(_ sender: Any) {
@@ -42,6 +82,25 @@ class ViewController: UIViewController {
         let randomImg = Int(arc4random_uniform(3))
         enemyJanken.image = UIImage(named: imageNameArray[randomImg])
         self.view.addSubview(enemyJanken)
+        // ジャンケンがグーなら、「勝ち」のメッセージを表示
+        if (enemyJanken.image == UIImage(named: "gu")){
+            let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
+            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okayButton)
+            present(alert, animated: true, completion: nil)
+            // OKボタンを押下してからの処理が必要
+        }
+        // ジャンケンがチョキなら、「負け」のメッセージを表示
+        if (enemyJanken.image == UIImage(named: "choki")){
+            let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
+            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+            alert.addAction(okayButton)
+            present(alert, animated: true, completion: nil)
+        }
+        // ジャンケンがパーなら、やり直し
+        if (enemyJanken.image == UIImage(named: "pa")){
+            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+        }
     }
     
     override func viewDidLoad() {
