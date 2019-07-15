@@ -45,6 +45,7 @@ class ViewController: UIViewController {
         if (enemyJanken.image == UIImage(named: "gu")){
             timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
         }
+        // 上記各々のメソッドがひ必要！！
     }
 
     @IBAction func choki(_ sender: Any) {
