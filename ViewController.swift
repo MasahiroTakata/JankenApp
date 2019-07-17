@@ -20,6 +20,27 @@ class ViewController: UIViewController {
         "pa",
     ]
     @IBOutlet weak var enemyJanken: UIImageView!
+    
+    func winMessage() {
+        let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        present(alert, animated: true, completion: nil)
+        // OKボタンを押下してからの処理が必要
+    }
+
+    func loseMessage() {
+        let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        present(alert, animated: true, completion: nil)
+        // OKボタンを押下してからの処理が必要
+    }
+    
+    func drawMessage() {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+    }
+    
     @IBAction func gu(_ sender: Any) {
         timer!.invalidate()
         let randomImg = Int(arc4random_uniform(3))
@@ -28,24 +49,16 @@ class ViewController: UIViewController {
         self.view.addSubview(enemyJanken)
         // ジャンケンがチョキなら、「勝ち」のメッセージを表示
         if (enemyJanken.image == UIImage(named: "choki")){
-            let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
-            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okayButton)
-            present(alert, animated: true, completion: nil)
-            // OKボタンを押下してからの処理が必要
+            winMessage()
         }
         // ジャンケンがパーなら、「負け」のメッセージを表示
         if (enemyJanken.image == UIImage(named: "pa")){
-            let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
-            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okayButton)
-            present(alert, animated: true, completion: nil)
+            loseMessage()
         }
         // ジャンケンがグーなら、やり直し
         if (enemyJanken.image == UIImage(named: "gu")){
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+            drawMessage()
         }
-        // 上記各々のメソッドがひ必要！！
     }
 
     @IBAction func choki(_ sender: Any) {
@@ -57,22 +70,15 @@ class ViewController: UIViewController {
         self.view.addSubview(enemyJanken)
         // ジャンケンがパーなら、「勝ち」のメッセージを表示
         if (enemyJanken.image == UIImage(named: "pa")){
-            let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
-            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okayButton)
-            present(alert, animated: true, completion: nil)
-            // OKボタンを押下してからの処理が必要
+            winMessage()
         }
         // ジャンケンがグーなら、「負け」のメッセージを表示
         if (enemyJanken.image == UIImage(named: "gu")){
-            let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
-            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okayButton)
-            present(alert, animated: true, completion: nil)
+            loseMessage()
         }
         // ジャンケンがチョキなら、やり直し
         if (enemyJanken.image == UIImage(named: "choki")){
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+            drawMessage()
         }
     }
 
@@ -85,22 +91,15 @@ class ViewController: UIViewController {
         self.view.addSubview(enemyJanken)
         // ジャンケンがグーなら、「勝ち」のメッセージを表示
         if (enemyJanken.image == UIImage(named: "gu")){
-            let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
-            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okayButton)
-            present(alert, animated: true, completion: nil)
-            // OKボタンを押下してからの処理が必要
+            winMessage()
         }
         // ジャンケンがチョキなら、「負け」のメッセージを表示
         if (enemyJanken.image == UIImage(named: "choki")){
-            let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
-            let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
-            alert.addAction(okayButton)
-            present(alert, animated: true, completion: nil)
+            loseMessage()
         }
         // ジャンケンがパーなら、やり直し
         if (enemyJanken.image == UIImage(named: "pa")){
-            timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+            drawMessage()
         }
     }
     
