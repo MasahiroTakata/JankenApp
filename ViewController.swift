@@ -38,7 +38,11 @@ class ViewController: UIViewController {
     }
     
     func drawMessage() {
-        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+        let alert = UIAlertController(title: "メッセージ", message: "あいこ！！", preferredStyle: UIAlertController.Style.alert)
+        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        alert.addAction(okayButton)
+        present(alert, animated: true, completion: nil)
+//        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
     }
     
     @IBAction func gu(_ sender: Any) {
