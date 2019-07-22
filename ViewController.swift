@@ -20,29 +20,39 @@ class ViewController: UIViewController {
         "pa",
     ]
     @IBOutlet weak var enemyJanken: UIImageView!
+    @IBOutlet weak var message: UILabel!
     
     func winMessage() {
         let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
-        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        // okボタンの実装
+        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+            self.message.text = "じゃーんけん..."
+        }
         alert.addAction(okayButton)
         present(alert, animated: true, completion: nil)
-        // OKボタンを押下してからの処理が必要
     }
 
     func loseMessage() {
         let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
-        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        // okボタンの実装
+        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+            self.message.text = "じゃーんけん..."
+        }
         alert.addAction(okayButton)
         present(alert, animated: true, completion: nil)
-        // OKボタンを押下してからの処理が必要
     }
     
     func drawMessage() {
         let alert = UIAlertController(title: "メッセージ", message: "あいこ！！", preferredStyle: UIAlertController.Style.alert)
-        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil)
+        // okボタンの実装
+        let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
+            self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
+            self.message.text = "相子で・・・"
+        }
         alert.addAction(okayButton)
         present(alert, animated: true, completion: nil)
-//        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
     }
     
     @IBAction func gu(_ sender: Any) {
