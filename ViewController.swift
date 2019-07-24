@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     
     func winMessage() {
         let alert = UIAlertController(title: "メッセージ", message: "勝ち！！", preferredStyle: UIAlertController.Style.alert)
+        self.message.text = "ポンっっ！！"
         // okボタンの実装
         let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
 
     func loseMessage() {
         let alert = UIAlertController(title: "メッセージ", message: "負け！！", preferredStyle: UIAlertController.Style.alert)
+        self.message.text = "ポンっっ！！"
         // okボタンの実装
         let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
@@ -46,6 +48,7 @@ class ViewController: UIViewController {
     
     func drawMessage() {
         let alert = UIAlertController(title: "メッセージ", message: "あいこ！！", preferredStyle: UIAlertController.Style.alert)
+        self.message.text = "ポンっっ！！"
         // okボタンの実装
         let okayButton = UIAlertAction(title: "OK", style: UIAlertAction.Style.default){ (action: UIAlertAction) in
             self.timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(ViewController.onTimer(timer:)), userInfo: nil, repeats: true)
